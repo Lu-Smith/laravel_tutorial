@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
+use App\Http\Requests\StoreMessagesRequest;
 
 class ContactController extends Controller
 {
@@ -15,17 +16,11 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    public function storeMessage(Request $request) {
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required|min:8|max:1000',
-        ]);
-    
+    public function storeMessage(StoreMessagesRequest $request) {
         Message::create([
-            'sender_name' => $validated['name'],
-            'sender_email' => $validated['email'],
-            'sender_message' => $validated['message'],
+            'sender_name' => $request->input('name'),
+            'sender_email' => $request->input('email'),
+            'sender_message' => $request->input('message'),
         ]);
     
         return redirect('/messages');
