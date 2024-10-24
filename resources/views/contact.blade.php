@@ -25,6 +25,7 @@
           Your Name
         </label>
         <input type="text" id="name" name="name" required
+        value="{{ old('name') }}"
         class="w-full px-4 py-3 border border-gray-600 bg-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </div>
       <div class="mb-4">
@@ -32,6 +33,7 @@
           Your Email
         </label>
         <input type="email" id="email" name="email" required
+         value="{{ old('email') }}"
         class="w-full px-4 py-3 border border-gray-600 bg-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </div>
       <div class="mb-6">
@@ -42,7 +44,9 @@
         name="message" 
         id="message" 
         rows="4"
-        class="w-full px-4 py-3 border border-gray-600 bg-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+        class="w-full px-4 py-3 border border-gray-600 bg-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        {{ old('message') }}
+      </textarea>
       </div>
       <button 
       type="submit"
