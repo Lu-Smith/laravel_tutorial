@@ -18,5 +18,15 @@ Route::post('/contact', function (Request $request) {
         'message' => 'required|min:8|max:1000',
     ]);
 
-    return redirect('/');
+    Message::create([
+        'sender_name' => $validated['name'],
+        'sender_email' => $validated['email'],
+        'sender_message' => $validated['message'],
+    ]);
+
+    return redirect('/messages');
+});
+
+Route::get('/messages', function () {
+    return view('messages', ['messages' => Message::all()]);
 });
