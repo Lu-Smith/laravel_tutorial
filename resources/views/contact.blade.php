@@ -11,6 +11,15 @@
     <h2 class="text-3xl font-bold text-indigo-400 mb-6 text-center">Contact Us</h2>
     <form action="/contact" method="POST" novalidate>
       @csrf
+      @if($errors->any())
+      <div class="m-2 p-2 border-2 border-rose-500 rounded-md">
+        <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
       <div class="mb-4">
         <label for="name" class="block text-sm font-semibold mb-2 text-indigo-300">
           Your Name
